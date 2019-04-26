@@ -101,11 +101,12 @@ void loop() {
       client.loop();
   }
 //  client.publish("c/data/d/temp","22");
-  if(getValueString(readIncomingData(),';',1)=="DHT22"){
-    client.publish("c/data/d/string",readIncomingData());
-  }
+  
+  
+  
   if(readIncomingData()!=""){
   Serial.println(readIncomingData());
+    client.publish("c/data/d/string",readIncomingData());
   content="";
   }
 }

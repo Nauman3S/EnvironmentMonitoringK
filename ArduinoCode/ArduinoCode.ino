@@ -1,4 +1,5 @@
 #include <SoftwareSerial.h>
+#include <MQ2.h>
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
 #include <DHT_U.h>
@@ -8,6 +9,8 @@ SoftwareSerial SoftSerialAM(7,8);
 #define DHTPIN 2
 #define DHTTYPE    DHT22   
 DHT_Unified dht(DHTPIN, DHTTYPE);
+int mq2pin=A3;
+MQ2 mq2(mq2pin);
 
 uint32_t delayMS;
 //delay
@@ -15,12 +18,16 @@ void SendData(String dat);
 void SetupDHT();
 String getDHT22Val();
 void DHT22Loop();
+void MQ2Setup();
+String MQ2Val();
+void MQ2Loop();
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(230400);
    SoftSerialAM.begin(115200);
    SetupDHT();
+   MQ2Setup();
    
 }
 
@@ -28,6 +35,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   
   DHT22Loop();
+  MQ2Loop();
 }
 
 void SendData(String dat){
@@ -104,6 +112,35 @@ void DHT22Loop(){
   
   
   delay(200);
+  SendData(dat);
+  Serial.println(dat);
+  
+  }
+}
+
+void MQ2Setup(){
+  mq2.begin();
+}
+
+String MQ2Val(){
+  int lpg, co, smoke;
+  float* values= mq2.read(true); //set it false if you don't want to print the values in the Serial
+  //lpg = values[0];
+  lpg = mq2.readLPG();
+  //co = values[1];
+  co = mq2.readCO();
+  //smoke = values[2];
+  smoke = mq2.readSmoke();
+  //delay(150);
+  return String("#Sensor;MQ2;"+String(lpg)+";"+String(co)+";"+String(smoke)+"*");
+}
+void MQ2Loop(){
+  String dat=MQ2Val();
+  
+  if(dat.length()>2){
+  
+  
+  //delay(200);
   SendData(dat);
   Serial.println(dat);
   
