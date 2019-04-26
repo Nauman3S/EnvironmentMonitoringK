@@ -1,0 +1,4 @@
+GET /nic/update?hostname=3STechLabs&myip=ipaddress&wildcard=NOCHG&mx=NOCHG&backmx=NOCHG HTTP/1.0 
+Host: updates.dnsomatic.com 
+Authorization: Basic naumanshakir3s@gmail.com Opendns@nauman1
+User-Agent: Company - Device - Version Number

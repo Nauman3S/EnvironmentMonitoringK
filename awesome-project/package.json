@@ -1,0 +1,37 @@
+{
+  "name": "awesome-project",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "chart.js": "^1.1.1",
+    "gsap": "^2.1.2",
+    "mqtt-react": "0.0.3",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.6",
+    "react-chartjs": "^1.2.0",
+    "react-circular-progressbar": "^1.1.0",
+    "react-dom": "^16.8.6",
+    "react-gauge-chart": "^0.1.2",
+    "react-gsap": "^1.2.0",
+    "react-scripts": "2.1.8",
+    "recharts": "^1.5.0",
+    "typeface-roboto": "0.0.54"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
