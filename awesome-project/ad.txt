@@ -1,0 +1,8 @@
+1556262034|Initial commit
+1556262184|Node and Gateway Firmware
+1556263770|MQ2 Sensor
+1556263936|Added React App Files
+1556517452|Added Temperature chart functionality
+1556519003|Fixed temp chart issue
+1556519423|Fixed nomenclature of ChartsElement
+1556523528|Added Y-Axis formatting for MQChart

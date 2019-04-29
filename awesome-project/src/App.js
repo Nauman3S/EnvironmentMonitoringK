@@ -12,7 +12,7 @@ import Clock from "./ClockWidget.js";
 import ChartElement from "./ChartsElement";
 import Demo from './ConnectedSensors.js';
 
-const MessageContainer = subscribe({topic: '@near/demo'})(_MessageContainer);
+const MessageContainer = subscribe({topic: 'c/data/d/string'})(_MessageContainer);
 
 class SideBar extends React.Component{
   
@@ -207,12 +207,12 @@ class App extends Component {
           <div className="w3-row-padding">
 
           <div className="w3-col s4 w3-center w3-padding-24" >
-          <MessageContainer type={"temp"} />
+          <MessageContainer  type={"temp"} />
           
           </div>
           
           <div className="w3-col s4 w3-center w3-padding-24">
-          <MessageContainer type={"humid"}/>
+          <MessageContainer  type={"humid"} />
           </div>
           <div className="w3-col s4 w3-center w3-padding-16 w3-right" style={{display:"flex", flexDirection:"row-reverse"}}>
           
@@ -231,12 +231,13 @@ class App extends Component {
           </div>
           
           <div className="w3-col s4 w3-center w3-padding-16">
-          <MessageContainer type={"tempChart"}/>
+          <MessageContainer type={"tempChart"} />
           </div>
           
           </div>
+          <div>
           <MessageContainer type={"MQChart"} />
-          
+          </div>
          {/*  <GaugeElement val={16} def="Temperature Sensor"/> */}
           <br/>
           <div style={{display:"flex", flexDirection:"left"}}>
