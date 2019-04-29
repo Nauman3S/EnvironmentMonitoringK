@@ -235,6 +235,7 @@ class App extends Component {
           </div>
           
           </div>
+          <MessageContainer type={"MQChart"} />
           
          {/*  <GaugeElement val={16} def="Temperature Sensor"/> */}
           <br/>

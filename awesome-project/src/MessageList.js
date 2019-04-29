@@ -2,6 +2,7 @@ import React from 'react';
 
 import {GaugeElement} from "./GaugeElement.js";
 import ChartElement from './ChartsElement.js';
+import MQChart from './MQChart.js';
 //import { ReactComponent } from '*.svg';
 
 var TempGraph=[{name:0, Value:0}];
@@ -26,8 +27,13 @@ export default ({data,type}) => {
     console.log(arr);
     if (arr[0]==="Sensor"){
       if (arr[1]==="DHT22"){
+       
+
+        return (
         
-        return (<GaugeElement val={parseInt( arr[2])} def="Temperature Sensor"/> );
+        <GaugeElement val={parseInt( arr[2])} def="Temperature Sensor"/> 
+        
+        );
       }
     }
   }
@@ -84,6 +90,13 @@ else if(type==="tempChart"){
     var TempGraphDef=[{name:0, Value:0}];
     return (<ChartElement val={TempGraphDef} def="Temperature Sensor"/> );
   }
+}
+else if(type==="MQChart"){
+  var valArr=[{name:0, LPG:0, CO:102.3, Smoke:23.43}];
+valArr.push({name:1, LPG:10, CO:22.3, Smoke:0.43});
+valArr.push({name:2, LPG:50, CO:1.3, Smoke:98.43});
+
+return(<MQChart val={valArr} def="Gas Sensor"/>);
 }
 else{
     return(<div>No Data</div>)
