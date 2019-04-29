@@ -32,7 +32,7 @@ export default ({data,type}) => {
 
         return (
         
-        <GaugeElement val={parseInt( arr1[2])} def="Temperature Sensor"/> 
+        <GaugeElement val={parseInt( arr1[2])} def="Temperature Sensor" sign={"°C"}/> 
         
         );
       }
@@ -52,7 +52,7 @@ else if(type==="humid"){
     if (arr2[0]==="Sensor"){
       if (arr2[1]==="DHT22"){
    
-    return (<GaugeElement val={parseInt( arr2[3])} def="Humidity Sensor"/> );
+    return (<GaugeElement val={parseInt( arr2[3])} def="Humidity Sensor" sign={"%"}/> );
       }
     }
   }

@@ -191,7 +191,7 @@ class App extends Component {
   render() {
 
     return (
-      <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" >
+     /* <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" >*/
       <div className="App">
       <SideBar />
       <div style={{marginLeft:'18', marginRight:-130.5}}>
@@ -207,12 +207,43 @@ class App extends Component {
           <div className="w3-row-padding">
 
           <div className="w3-col s4 w3-center w3-padding-24" >
+          <div className="w3-card-4 w3-gray w3-round-large" style={{width:240, height:170 ,position:"relative"}} >
+      
+        <div style={{width: 120, marginLeft:"auto", marginRight:"auto"}}>
+        
+          <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" >
           <MessageContainer  type={"temp"} />
-          
+          </Connector>
+          </div>
+         <div className="w3-container w3-round w3-center w3-light-gray" style={{height:45,width:240,position:"absolute",bottom:0}} >
+         
+        <h6 style={{position:"absolute", bottom:0}}>{"Temperature Sensor"}</h6>
+
+        </div>
+        </div>
+
+
           </div>
           
           <div className="w3-col s4 w3-center w3-padding-24">
-          <MessageContainer  type={"humid"} />
+          <div className="w3-card-4 w3-gray w3-round-large" style={{width:240, height:170 ,position:"relative"}} >
+      
+      <div style={{width: 120, marginLeft:"auto", marginRight:"auto"}}>
+      
+          <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" >
+          <MessageContainer  type={"humid"} /> 
+          </Connector>
+          </div>
+          
+         <div className="w3-container w3-round w3-center w3-light-gray" style={{height:45,width:240,position:"absolute",bottom:0}} >
+         
+        <h6 style={{position:"absolute", bottom:0}}>{"Temperature Sensor"}</h6>
+
+
+           </div>
+        </div>
+
+
           </div>
           <div className="w3-col s4 w3-center w3-padding-16 w3-right" style={{display:"flex", flexDirection:"row-reverse"}}>
           
@@ -231,12 +262,14 @@ class App extends Component {
           </div>
           
           <div className="w3-col s4 w3-center w3-padding-16">
-          <MessageContainer type={"tempChart"} />
+          {/* <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" > */}
+           {/* <MessageContainer type={"tempChart"} />  */}
+           {/* </Connector> */}
           </div>
           
           </div>
           <div>
-          <MessageContainer type={"MQChart"} />
+          {/* <MessageContainer type={"MQChart"} /> */}
           </div>
          {/*  <GaugeElement val={16} def="Temperature Sensor"/> */}
           <br/>
@@ -251,7 +284,7 @@ class App extends Component {
         </div>
         </div>
 
-        </Connector>  
+//        </Connector>  
       
     );
   }

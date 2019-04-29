@@ -16,6 +16,7 @@ constructor(props){
 }
 
 
+
   addMessage(message){
     
     const {mqtt} = this.props;

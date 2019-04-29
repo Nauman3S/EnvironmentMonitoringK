@@ -3,25 +3,28 @@ import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 export  class GaugeElement extends React.Component {
+    shouldComponentUpdate(nextProps) {
+        console.log("thisState",this.props.val);
+        console.log("nextState",this.nextProps.val);
+      if(this.props.val===this.nextProps.val){
+        return false;
+      }
+      if(this.props.val!==this.nextProps.val){
+        return true;
+      }
+    }
     constructor(props) {
         super(props);
-        this.state={val:this.props.val}
-
+        this.state={val:this.props.val};
+        this.state={sign:this.props.sign};
     }
+  
 
     render() {
         return (
-        <div className="w3-card-4 w3-gray w3-round-large" style={{width:240}} >
-      
-        <div style={{width: 120, marginLeft:"auto", marginRight:"auto"}}>
-        <CircularProgressbar percentage={this.props.val} text={`${this.props.val}%`}/>
-        </div>
-         <div className="w3-container w3-round w3-center w3-light-gray">
-         
-        <h6>{this.props.def}</h6>
-
-           </div>
-        </div>
+        
+        <CircularProgressbar percentage={this.props.val} text={`${this.props.val}${this.state.sign}`}/>
+        
 
         );
 
