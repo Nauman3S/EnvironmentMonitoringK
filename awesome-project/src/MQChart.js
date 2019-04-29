@@ -89,7 +89,7 @@ val=[];
 
 return (
           
-            <div className="w3-card-4 w3-white w3-round-large" style={{width:510 , height: 250, paddingTop:10}} >
+            //<div className="w3-card-4 w3-white w3-round-large" style={{width:510 , height: 250, paddingTop:10}} >
             <ResponsiveContainer width={500} height={200}>
     <LineChart width={500} height={200} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }} key={Math.random()}>
     <CartesianGrid  strokeDasharray="3 3" stroke="gray"  />
@@ -98,21 +98,21 @@ return (
     <Brush dataKey='name' height={30} stroke="#8884d8"/>
     <YAxis dataKey={YAxisTick} tick={{fill:'black',fontSize:10}}/>
     <Tooltip wrapperStyle={{fontSize:10}} />
-    <Legend />
-    <Line type="monotone" dataKey="LPG"  isUpdateAnimationActive={true}/>
-    <Line type="monotone" dataKey="CO"  isUpdateAnimationActive={true}/>
-    <Line type="monotone" dataKey="Smoke"  isUpdateAnimationActive={true}/>
+    <Legend wrapperStyle={{fontSize:16}}/>
+    <Line type="monotone" dataKey="LPG"  isUpdateAnimationActive={true} stroke="#8884d8"/>
+    <Line type="monotone" dataKey="CO"  isUpdateAnimationActive={true} stroke="#BA4A00"/>
+    <Line type="monotone" dataKey="Smoke"  isUpdateAnimationActive={true} stroke="#2C3E50"/>
     
     
-    
+
   </LineChart>
   </ResponsiveContainer>
-  <div className="w3-container w3-round w3-center w3-light-gray">
+  //<div className="w3-container w3-round w3-center w3-light-gray">
          
-         <h6>{this.props.def}</h6>
+    //     <h6>{this.props.def}</h6>
  
-            </div>
-  </div>
+      //      </div>
+  //</div>
       );
     }
   }

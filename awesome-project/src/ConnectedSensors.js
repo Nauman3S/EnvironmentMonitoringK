@@ -29,7 +29,7 @@ function AlignItemsList(props) {
           <Avatar alt="Remy Sharp" src="https://ae01.alicdn.com/kf/HTB1SyuwoL9TBuNjy0Fcq6zeiFXaE/Temperature-and-Humidity-sensor-DHT22.jpg_640x640.jpg" />
         </ListItemAvatar>
         <ListItemText
-          primary="Temperature Sensor"
+          primary="Temperature&Humidity Sensor"
           secondary={
             <React.Fragment>
               <Typography component="span" className={classes.inline} color="textPrimary">
@@ -45,13 +45,13 @@ function AlignItemsList(props) {
           <Avatar alt="Remy Sharp" src="https://cdn.shopify.com/s/files/1/1546/3951/products/y9_1024x1024.jpg?v=1527267885" />
         </ListItemAvatar>
         <ListItemText
-          primary="Co2 Sensor"
+          primary="Gas Sensor"
           secondary={
             <React.Fragment>
               <Typography component="span" className={classes.inline} color="textPrimary">
                 MQ2
               </Typography>
-              {" — For detecting Co2 Levels in air."}
+              {" — For detecting LPG, CO and Smoke Levels in air."}
             </React.Fragment>
           }
         />

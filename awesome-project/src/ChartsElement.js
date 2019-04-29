@@ -49,8 +49,8 @@ export default class ChartElement extends React.Component {
     <Brush dataKey='name' height={30} stroke="#8884d8"/>
     <YAxis dataKey='Value' tick={{fill:'black',fontSize:10}}/>
     <Tooltip wrapperStyle={{fontSize:10}} />
-    <Legend />
-    <Line type="monotone" dataKey="Value"  isUpdateAnimationActive={true}/>
+    <Legend wrapperStyle={{fontSize:16}}/>
+    <Line type="monotone" dataKey="Value"  isUpdateAnimationActive={true} stroke="#82ca9d"/>
     
     
     
