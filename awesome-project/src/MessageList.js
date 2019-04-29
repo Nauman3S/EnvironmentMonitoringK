@@ -60,7 +60,8 @@ else if(type==="tempChart"){
   var dt = new Date();
   var utcDate = dt.toUTCString();
   console.log(utcDate);
-  if(data[0]>=0){
+  
+  if(data[0]!=null){
     try{
       var arr=data[0].split(";");
       console.log(arr);
