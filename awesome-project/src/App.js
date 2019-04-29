@@ -7,13 +7,14 @@ import './w3.css';
 
 import {Connector} from "mqtt-react";
 import _MessageContainer from './MQTTsubscribe.js';
+import _MessageContainerMQ2 from './MQTTSubscribeMQ2';
 import {subscribe} from 'mqtt-react';
 import Clock from "./ClockWidget.js";
 import ChartElement from "./ChartsElement";
 import Demo from './ConnectedSensors.js';
 
 const MessageContainer = subscribe({topic: 'c/data/d/string'})(_MessageContainer);
-
+const MessageContainerMQ2 = subscribe({topic: 'c/data/mq2/string'})(_MessageContainerMQ2);
 class SideBar extends React.Component{
   
   
@@ -292,7 +293,7 @@ class App extends Component {
   <div className="w3-col s4  w3-padding-16">
           <div className="w3-card-4 w3-white w3-round-large" style={{width:510 , height: 250, paddingTop:10, position:"relative"}} >
            <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" > 
-           <MessageContainer type={"MQChart"} />  
+           <MessageContainerMQ2 type={"MQChart"} />  
            </Connector> 
            <div className="w3-container w3-round w3-center w3-light-gray" style={{height:45,width:510,position:"absolute",bottom:0}}>
          

@@ -107,6 +107,7 @@ void loop() {
   if(readIncomingData()!=""){
   Serial.println(readIncomingData());
     client.publish("c/data/d/string",readIncomingData());
+    client.publish("c/data/mq2/string","Sensor;MQ2;12.24;33.2;76.72");
   content="";
   }
 }
@@ -157,9 +158,14 @@ int flag=0;
   }
   }
   if (content != "" && content.length()>2) {
+ 
+ 
+        return content;    
+ 
+    }
+ 
     
-    return content;
-  }
+  
   return "";
 }
 
