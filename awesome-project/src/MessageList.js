@@ -2,31 +2,82 @@ import React from 'react';
 
 import {GaugeElement} from "./GaugeElement.js";
 import ChartElement from './ChartsElement.js';
+//import { ReactComponent } from '*.svg';
 
 var TempGraph=[{name:0, Temperature:0}];
 export default ({data,type}) => {
  // const dataList = data.map((d) => <li>{d}</li>)
 
 
-  console.log(data);
+  console.log("dataa",data);
+  console.log("d0",data[0]);
+  var k=data[0]
+  var valuesArray=[];
+  
+ 
+  
   //console.log("props",props);
   console.log("props",type);
+  
  if (type==="temp"){
-   
-     return (<GaugeElement val={parseInt( data[0])} def="Temperature Sensor"/> );
+   console.log("varray",valuesArray);
+   try{
+    var arr=k.split(";");
+    console.log(arr);
+    if (arr[0]==="Sensor"){
+      if (arr[1]==="DHT22"){
+        
+        return (<GaugeElement val={parseInt( arr[2])} def="Temperature Sensor"/> );
+      }
+    }
+  }
+  catch(err){
+    console.log("error while splitting data array");
+  }
+     
+  
+     
 }
 else if(type==="humid"){
-    return (<GaugeElement val={parseInt( data[0])} def="Humidity Sensor"/> );
+  try{
+    var arr=data[0].split(";");
+    console.log(arr);
+    if (arr[0]==="Sensor"){
+      if (arr[1]==="DHT22"){
+   
+    return (<GaugeElement val={parseInt( arr[3])} def="Humidity Sensor"/> );
+      }
+    }
+  }
+  catch(err){
+    console.log("error while splitting data array");
+  }
+     
+
 }
+
 else if(type==="tempChart"){
   var dt = new Date();
   var utcDate = dt.toUTCString();
   console.log(utcDate);
   if(data[0]>=0){
-  var k={name:utcDate,Temperature: parseInt(data[0])};
+    try{
+      var arr=data[0].split(";");
+      console.log(arr);
+      if (arr[0]==="Sensor"){
+        if (arr[1]==="DHT22"){
+     
+  var k={name:utcDate,Temperature: parseInt(arr[2])};
   TempGraph.push(k);
   console.log("tempGraph", TempGraph);
   return (<ChartElement val={TempGraph} def="Temperature Sensor"/> );
+
+        }
+      }
+    }
+    catch(err){
+    console.log("error while splitting data array");
+  }
   }
   else{
     var TempGraphDef=[{name:0, Temperature:0}];
