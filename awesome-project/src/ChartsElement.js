@@ -13,10 +13,10 @@ var data = [
 ];
 
  
- data.push({name:utcDate,Temperature: 20}) ;
- data.push({name:utcDate,Temperature: 25}) ;
- data.push({name:utcDate,Temperature: 34}) ;
- data.push({name:utcDate,Temperature: 10}) ;
+ data.push({name:utcDate,Value: 20}) ;
+ data.push({name:utcDate,Value: 25}) ;
+ data.push({name:utcDate,Value: 34}) ;
+ data.push({name:utcDate,Value: 10}) ;
 
  
  
@@ -25,14 +25,14 @@ export default class ChartElement extends React.Component {
     constructor(props){
         super(props);
         
-      //  data.push({name:utcDate,Temperature: this.props.val}) ;
+      //  data.push({name:utcDate,Value: this.props.val}) ;
         //console.log("chartData",data)
         
         this.render();
         
     }
     render() {
-      //var m={name:utcDate,Temperature: this.props.val};
+      //var m={name:utcDate,Value: this.props.val};
       //data.push(this.props.val[this.props.val.length -1]);
       data=[{}];
       data=this.props.val;
@@ -47,10 +47,10 @@ export default class ChartElement extends React.Component {
     <XAxis dataKey="name" tick={{fill:'black',fontSize:10}}/>
     
     <Brush dataKey='name' height={30} stroke="#8884d8"/>
-    <YAxis dataKey='Temperature' tick={{fill:'black',fontSize:10}}/>
+    <YAxis dataKey='Value' tick={{fill:'black',fontSize:10}}/>
     <Tooltip wrapperStyle={{fontSize:10}} />
     <Legend />
-    <Line type="monotone" dataKey="Temperature"  isUpdateAnimationActive={true}/>
+    <Line type="monotone" dataKey="Value"  isUpdateAnimationActive={true}/>
     
     
     

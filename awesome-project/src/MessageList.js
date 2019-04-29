@@ -4,7 +4,7 @@ import {GaugeElement} from "./GaugeElement.js";
 import ChartElement from './ChartsElement.js';
 //import { ReactComponent } from '*.svg';
 
-var TempGraph=[{name:0, Temperature:0}];
+var TempGraph=[{name:0, Value:0}];
 export default ({data,type}) => {
  // const dataList = data.map((d) => <li>{d}</li>)
 
@@ -68,7 +68,7 @@ else if(type==="tempChart"){
       if (arr[0]==="Sensor"){
         if (arr[1]==="DHT22"){
      
-  var k={name:utcDate,Temperature: parseInt(arr[2])};
+  var k={name:utcDate,Value: parseInt(arr[2])};
   TempGraph.push(k);
   console.log("tempGraph", TempGraph);
   return (<ChartElement val={TempGraph} def="Temperature Sensor"/> );
@@ -81,7 +81,7 @@ else if(type==="tempChart"){
   }
   }
   else{
-    var TempGraphDef=[{name:0, Temperature:0}];
+    var TempGraphDef=[{name:0, Value:0}];
     return (<ChartElement val={TempGraphDef} def="Temperature Sensor"/> );
   }
 }
