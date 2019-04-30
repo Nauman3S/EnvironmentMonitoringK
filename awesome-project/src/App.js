@@ -8,13 +8,15 @@ import './w3.css';
 import {Connector} from "mqtt-react";
 import _MessageContainer from './MQTTsubscribe.js';
 import _MessageContainerMQ2 from './MQTTSubscribeMQ2';
+import _MessageContainerDust from './MQTTSubscribeDust';
 import {subscribe} from 'mqtt-react';
 import Clock from "./ClockWidget.js";
 import ChartElement from "./ChartsElement";
 import Demo from './ConnectedSensors.js';
 
-const MessageContainer = subscribe({topic: 'c/data/d/string'})(_MessageContainer);
+const MessageContainer = subscribe({topic: 'c/data/dht22/string'})(_MessageContainer);
 const MessageContainerMQ2 = subscribe({topic: 'c/data/mq2/string'})(_MessageContainerMQ2);
+const MessageContainerDust = subscribe({topic: 'c/data/dust/string'})(_MessageContainerDust);
 class SideBar extends React.Component{
   
   
