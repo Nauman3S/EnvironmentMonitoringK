@@ -323,6 +323,7 @@ class App extends Component {
  <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" > 
  <MessageContainerDust type={"Dust"} />  
  </Connector> 
+ {{****}}
  <div className="w3-container w3-round w3-center w3-light-gray" style={{height:45,width:510,position:"absolute",bottom:0}}>
 
      <h6 style={{position:"absolute", bottom:0}}>Dust Concentration Chart mg/m^3</h6>
