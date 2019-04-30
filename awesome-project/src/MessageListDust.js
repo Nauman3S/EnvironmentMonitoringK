@@ -20,7 +20,7 @@ export default ({data,type}) => {
   //console.log("props",props);
   console.log("props",type);
 
-  if(type==="MQChart"){
+  if(type==="Dust"){
  /* var valArr=[{name:0, LPG:0, CO:102.3, Smoke:23.43}];
 valArr.push({name:1, LPG:10, CO:22.3, Smoke:0.43});
 valArr.push({name:2, LPG:50, CO:1.3, Smoke:98.43});

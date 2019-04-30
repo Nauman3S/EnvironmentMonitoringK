@@ -280,18 +280,16 @@ class App extends Component {
           </div>
           
           </div>
-          <div>
-
-      
          
+          <div>
           </div>
          
 
          <div class="w3-row">
-  <div class="w3-col s3 w3-green w3-center">
+  <div className="w3-col s3 w3-green w3-center">
   <p>Environment Monitoring</p>
   </div>
-  <div class="w3-col s9  w3-center">
+  <div className="w3-col s9  w3-center">
   <div className="w3-col s4  w3-padding-16">
           <div className="w3-card-4 w3-white w3-round-large" style={{width:510 , height: 250, paddingTop:10, position:"relative"}} >
            <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" > 
@@ -309,6 +307,43 @@ class App extends Component {
           
   </div>
 </div>
+
+
+<div className="w3-row-padding">
+
+<div className="w3-col s4 w3-center w3-padding-16">
+<div className="w3-card-4 w3-white w3-round-large" style={{width:510 , height: 250, paddingTop:10, position:"relative"}} >
+ <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" > 
+ <MessageContainerDust type={"Dust"} />  
+ </Connector> 
+ <div className="w3-container w3-round w3-center w3-light-gray" style={{height:45,width:510,position:"absolute",bottom:0}}>
+
+     <h6 style={{position:"absolute", bottom:0}}>Dust Concentration Chart mg/m^3</h6>
+
+      </div>
+</div>
+
+
+</div>
+<div className="w3-col s4 w3-center w3-padding-16 " >
+{/* <Demo /> */}
+
+</div>
+
+
+
+</div>
+
+<div>
+</div>
+
+
+
+
+
+
+
+
           <br/>
           <div style={{display:"flex", flexDirection:"left"}}>
           <Toggle />
