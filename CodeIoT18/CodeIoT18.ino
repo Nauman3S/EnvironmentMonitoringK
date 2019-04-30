@@ -6,7 +6,7 @@
 SoftwareSerial SoftSerialWD(D7,D8);
 
 String getValueString(String data, char separator, int index);
-
+bool contains(String Val, String element);
 
 String userName="testuser";
 
@@ -22,7 +22,7 @@ const int mqtt_port = 1883;
 const char *mqtt_user = "testUser";
 const char *mqtt_pass = "testUser@nauman";
 const char *mqtt_client_name = __mac;//"12312312312332212";// any random alphanumeric stirng
-#define BUFFER_SIZE 100
+#define BUFFER_SIZE 250
 String incoming="";
 String content = "";
 WiFiClient wclient;
@@ -51,10 +51,23 @@ incoming=String(pub.payload_string());
 Serial.println(pub.payload_string());
 Serial.println(incoming);
 
-if (incoming=="anything"){
-///for future reference 
-}
+///Messages Router
+if (contains(incoming,"Sensor;MQ2")){
+  Serial.println("Routing MQ2 Value");
+client.publish("c/data/mq2/string",incoming);
 
+}
+else if(contains(incoming,"Sensor;DHT22")){
+  Serial.println("Routing DHT22 Value");
+  client.publish("c/data/dht22/string",incoming);
+  
+}
+else if(contains(incoming,"Sensor;Dust")){
+  Serial.println("Routing Dust Value");
+  client.publish("c/data/dust/string",incoming);
+  
+}
+///////////////////////////
 }
 
 
@@ -91,7 +104,7 @@ void loop() {
         Serial.println("Connected to MQTT server");
 	client.set_callback(callback);
 	
-	client.subscribe("s/ds");//for future reference
+	client.subscribe("c/data/d/string");//for future reference
       } else {
         Serial.println("Could not connect to MQTT server");   
       }
@@ -105,9 +118,10 @@ void loop() {
   
   
   if(readIncomingData()!=""){
+    Serial.println("Data from Serial Port");
   Serial.println(readIncomingData());
     client.publish("c/data/d/string",readIncomingData());
-    client.publish("c/data/mq2/string","Sensor;MQ2;12.24;33.2;76.72");
+   // client.publish("c/data/mq2/string","Sensor;MQ2;12.24;33.2;76.72");
   content="";
   }
 }
@@ -167,5 +181,14 @@ int flag=0;
     
   
   return "";
+}
+
+bool contains(String Val, String element){
+  if (Val.indexOf(element)>=0){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
 

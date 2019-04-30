@@ -3,6 +3,7 @@
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
 #include <DHT_U.h>
+#include "DustSensor.h"
 
 SoftwareSerial SoftSerialAM(7,8);
 
@@ -11,6 +12,7 @@ SoftwareSerial SoftSerialAM(7,8);
 DHT_Unified dht(DHTPIN, DHTTYPE);
 int mq2pin=A3;
 MQ2 mq2(mq2pin);
+DustSensor sensor = DustSensor(A7, 6);
 
 uint32_t delayMS;
 //delay
@@ -21,6 +23,9 @@ void DHT22Loop();
 void MQ2Setup();
 String MQ2Val();
 void MQ2Loop();
+void SetupDust();
+String DustVal();
+void DustLoop();
 
 void setup() {
   // put your setup code here, to run once:
@@ -36,6 +41,7 @@ void loop() {
   
   DHT22Loop();
   MQ2Loop();
+  DustLoop();
 }
 
 void SendData(String dat){
@@ -43,9 +49,41 @@ void SendData(String dat){
  
  //f = String('H')+String("22")+String('T')+String("100%");
   SoftSerialAM.println(dat);
-delay(50);
+delay(10);
 }
 
+void SetupDust(){
+  
+}
+String DustVal(){
+   SensorData data = sensor.read();
+
+  Serial.print("Raw Signal Value (0-1023): ");
+  Serial.println(data.voMeasured);
+
+  Serial.print("Voltage: ");
+  Serial.println(data.calcVoltage);
+
+  Serial.print("Dust Density: ");
+  Serial.print(data.dustDensity);
+  Serial.println(F(" mg/m^3"));
+  Serial.println();
+
+return String("#Sensor;Dust;"+String(data.dustDensity)+";"+String(data.calcVoltage)+"*");
+}
+void DustLoop(){
+  String dat=DustVal();
+  
+  if(dat.length()>2){
+  
+  
+  //delay(200);
+  SendData(dat);
+  SendData(dat);
+  Serial.println(dat);
+  
+  }
+}
 
 void SetupDHT(){
    Serial.println("=================================");
