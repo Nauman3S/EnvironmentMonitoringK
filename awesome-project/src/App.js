@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import './w3.css';
 
+
 import {Connector} from "mqtt-react";
 import _MessageContainer from './MQTTsubscribe.js';
 import _MessageContainerMQ2 from './MQTTSubscribeMQ2';
@@ -13,6 +14,8 @@ import {subscribe} from 'mqtt-react';
 import Clock from "./ClockWidget.js";
 //import ChartElement from "./ChartsElement";
 import Demo from './ConnectedSensors.js';
+
+
 
 const MessageContainer = subscribe({topic: 'c/data/dht22/string'})(_MessageContainer);
 const MessageContainerMQ2 = subscribe({topic: 'c/data/mq2/string'})(_MessageContainerMQ2);
@@ -191,6 +194,10 @@ class Toggle extends React.Component {
   }
 }
 class App extends Component {
+
+   
+
+ 
   render() {
 
     return (
@@ -311,7 +318,7 @@ class App extends Component {
 
 <div className="w3-row-padding">
 
-<div className="w3-col s4 w3-center w3-padding-16">
+<div className="w3-col s4 w3-center w3-padding-24">
 <div className="w3-card-4 w3-white w3-round-large" style={{width:510 , height: 250, paddingTop:10, position:"relative"}} >
  <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt" > 
  <MessageContainerDust type={"Dust"} />  
@@ -325,9 +332,16 @@ class App extends Component {
 
 
 </div>
-<div className="w3-col s4 w3-center w3-padding-16 " >
+<div className="w3-col s4 w3-center w3-padding-24" style={{position:"relative", left:300}} >
+<div className="w3-card-4 w3-white w3-round-large" style={{width:350 , height: 270, paddingTop:1 }} >
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.526315931757!2d74.39356211453925!3d31.482214056176435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391905fd16e335c7%3A0x75e43af25cc8cf44!2sZong+Franchise+DHA!5e0!3m2!1sen!2s!4v1556618380951!5m2!1sen!2s" width="300" height="250" frameborder="0" style={{border:0 , position:"absolute", left:35}} allowfullscreen></iframe>
 {/* <Demo /> */}
+</div>
+<div className="w3-container w3-round w3-center w3-light-gray" style={{height:45,width:350,position:"absolute",bottom:0}}>
 
+     <h6 style={{position:"absolute", bottom:0}}>Location of EM Node</h6>
+
+      </div>
 </div>
 
 

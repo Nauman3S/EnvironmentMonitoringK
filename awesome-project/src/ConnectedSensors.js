@@ -8,6 +8,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -52,6 +53,26 @@ function AlignItemsList(props) {
                 MQ2
               </Typography>
               {" — For detecting LPG, CO and Smoke Levels in air."}
+            </React.Fragment>
+          }
+        />
+      </ListItem>
+     
+
+
+
+    <ListItem alignItems="flex-start">
+        <ListItemAvatar>
+          <Avatar alt="Remy Sharp" src="https://cdn.sparkfun.com//assets/parts/3/5/7/4/09689-01.jpg" />
+        </ListItemAvatar>
+        <ListItemText
+          primary="Dust Sensor"
+          secondary={
+            <React.Fragment>
+              <Typography component="span" className={classes.inline} color="textPrimary">
+                GP2Y1010AUF
+              </Typography>
+              {" — For detecting mg/m^3 dust concentration in air."}
             </React.Fragment>
           }
         />
