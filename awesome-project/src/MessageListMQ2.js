@@ -12,7 +12,7 @@ export default ({data,type}) => {
   console.log("dataa",data);
   console.log("d0",data[0]);
   var k=data[0]
-  var valuesArray=[];
+  //var valuesArray=[];
   
  
   

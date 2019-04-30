@@ -11,7 +11,7 @@ import _MessageContainerMQ2 from './MQTTSubscribeMQ2';
 import _MessageContainerDust from './MQTTSubscribeDust';
 import {subscribe} from 'mqtt-react';
 import Clock from "./ClockWidget.js";
-import ChartElement from "./ChartsElement";
+//import ChartElement from "./ChartsElement";
 import Demo from './ConnectedSensors.js';
 
 const MessageContainer = subscribe({topic: 'c/data/dht22/string'})(_MessageContainer);
@@ -110,7 +110,7 @@ class SideBar extends React.Component{
   }
 }
 
-class MQTTVal extends React.Component{
+/* class MQTTVal extends React.Component{
 
 
 constructor(props) {
@@ -155,7 +155,7 @@ constructor(props) {
   }
 
 
-}
+} */
 class Toggle extends React.Component {
   constructor(props) {
     super(props);
@@ -285,7 +285,7 @@ class App extends Component {
           </div>
          
 
-         <div class="w3-row">
+         <div className="w3-row">
   <div className="w3-col s3 w3-green w3-center">
   <p>Environment Monitoring</p>
   </div>
