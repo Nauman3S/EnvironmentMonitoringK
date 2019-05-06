@@ -38,7 +38,7 @@ export default class Dropdown extends React.Component {
   }
 
   handleText = (ev) => {
-    
+    this.props.sendDataDropDown(this.state.haveText);
     this.setState({
       haveText: ev.currentTarget.textContent
       
@@ -47,7 +47,9 @@ export default class Dropdown extends React.Component {
   }
 
   itemList = props => {
+    
     console.log(this.state.haveText);
+    
     const list = props.map((item) => (
       <div
         onClick={this.handleText}

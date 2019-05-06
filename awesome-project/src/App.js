@@ -15,7 +15,7 @@ import Clock from "./ClockWidget.js";
 //import ChartElement from "./ChartsElement";
 import Demo from './ConnectedSensors.js';
 import Dropdown from './DropDown.js';
-
+import TextBox from './TextBox';
 
 
 const MessageContainer = subscribe({topic: 'c/data/dht22/string'})(_MessageContainer);
@@ -195,10 +195,28 @@ class Toggle extends React.Component {
   }
 }
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state={dropDown:'', TextBox:''}
+    this.getData=this.getData.bind(this);
+    this.getDataDropDown=this.getDataDropDown.bind(this);
+  }
+  getData(val){
+    // do not forget to bind getData in constructor
+  //  console.log(val);
+    this.setState({TextBox:val});
+    console.log(this.state.TextBox);
+}
 
-   
+getDataDropDown(val1){
+  //console.log(val);
+  this.setState({dropDown:val1});
+  console.log(this.state.dropDown);
+  console.log(this.state.TextBox);
+  
 
- 
+}
+  
   render() {
 
     return (
@@ -363,8 +381,11 @@ class App extends Component {
           <br/>
           <div style={{display:"flex", flexDirection:"left"}}>
           <Toggle />
-          <Dropdown />
-
+          
+          <TextBox sendDataTextBox={this.getData}/>
+          
+          <Dropdown sendDataDropDown={this.getDataDropDown}/>
+          
           </div>
         
         {/* <MQTTVal topic="dd" message="msg" /> */}
