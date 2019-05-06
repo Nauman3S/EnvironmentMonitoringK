@@ -7,10 +7,13 @@ import MQChart from './MQChart.js';
 
 var TempGraph=[{name:0, Value:0}];
 var MQGraph=[{name:0,LPG:0,CO:0,Smoke:0}];
+var sendHumid={val:0,flag:0};
+export{sendHumid};
 export default ({data,type}) => {
  // const dataList = data.map((d) => <li>{d}</li>)
-
-
+ 
+  
+  
   console.log("dataa",data);
   console.log("d0",data[0]);
   var k=data[0]
@@ -29,6 +32,7 @@ export default ({data,type}) => {
     if (arr1[0]==="Sensor"){
       if (arr1[1]==="DHT22"){
        
+      
 
         return (
         
@@ -47,17 +51,24 @@ export default ({data,type}) => {
 }
 else if(type==="humid"){
   try{
+    
     var arr2=data[0].split(";");
+    
     console.log(arr2);
     if (arr2[0]==="Sensor"){
       if (arr2[1]==="DHT22"){
-   
+        
+         // var lang = this.dropdown.value;
+          //this.props.onSelectLanguage(lang);            
+          sendHumid={val:parseInt(arr2[3]),flag:1};///flag==1 no error
+      
+        
     return (<GaugeElement val={parseInt( arr2[3])} def="Humidity Sensor" sign={"%"}/> );
       }
     }
   }
   catch(err){
-    console.log("error while splitting data array");
+    console.log("error while splitting data array",err);
   }
      
 

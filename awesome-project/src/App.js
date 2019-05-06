@@ -8,6 +8,7 @@ import './w3.css';
 
 import {Connector} from "mqtt-react";
 import _MessageContainer from './MQTTsubscribe.js';
+import {sendHumid} from './MessageList.js';
 import _MessageContainerMQ2 from './MQTTSubscribeMQ2';
 import _MessageContainerDust from './MQTTSubscribeDust';
 import {subscribe} from 'mqtt-react';
@@ -16,6 +17,7 @@ import Clock from "./ClockWidget.js";
 import Demo from './ConnectedSensors.js';
 import Dropdown from './DropDown.js';
 import TextBox from './TextBox';
+import { send } from 'q';
 
 
 const MessageContainer = subscribe({topic: 'c/data/dht22/string'})(_MessageContainer);
@@ -197,15 +199,22 @@ class Toggle extends React.Component {
 class App extends Component {
   constructor(props){
     super(props);
-    this.state={dropDown:'', TextBox:''}
+    this.state={dropDown:'', TextBox:'', humid:0}
     this.getData=this.getData.bind(this);
     this.getDataDropDown=this.getDataDropDown.bind(this);
+    this.getHumid=this.getHumid.bind(this);
   }
+  
+  
   getData(val){
     // do not forget to bind getData in constructor
   //  console.log(val);
     this.setState({TextBox:val});
     console.log(this.state.TextBox);
+}
+ getHumid(val){
+  this.setState({humid:val});
+  console.log(this.state.humid);
 }
 
 getDataDropDown(val1){
@@ -213,8 +222,9 @@ getDataDropDown(val1){
   this.setState({dropDown:val1});
   console.log(this.state.dropDown);
   console.log(this.state.TextBox);
+  console.log(sendHumid.flag,"asdasd",sendHumid.val);
   
-
+console.log(sendHumid.val);
 }
   
   render() {
