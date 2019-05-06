@@ -1,7 +1,7 @@
 import React from 'react';
 import './dropdown.css';
 
-const race = [ 'Iron Dwarf','Highborn Human', 'Lowland Human', 'Mountain Dwarf', 'Scythian Elf', 'Woodland Elf'];
+const race = [ 'Temperature','Humidity', 'CO', 'LPG', 'Smoke', 'Dust'];
 
 
 export default class Dropdown extends React.Component {
@@ -23,7 +23,7 @@ export default class Dropdown extends React.Component {
         className={isOpen ? "dropdown active" : "dropdown"}
         onClick={this.handleClick} >
         <div className="dropdown__text">
-          {!haveText ? "Select Race" : haveText}
+          {!haveText ? "Select Sensor" : haveText}
         </div>
         {this.itemList(race)}
       </div>

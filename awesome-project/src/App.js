@@ -336,7 +336,7 @@ class App extends Component {
 </div>
 <div className="w3-col s4 w3-center w3-padding-24" style={{position:"relative", left:300}} >
 <div className="w3-card-4 w3-white w3-round-large" style={{width:350 , height: 270, paddingTop:1 }} >
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.526315931757!2d74.39356211453925!3d31.482214056176435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391905fd16e335c7%3A0x75e43af25cc8cf44!2sZong+Franchise+DHA!5e0!3m2!1sen!2s!4v1556618380951!5m2!1sen!2s" width="300" height="250" frameborder="0" style={{border:0 , position:"absolute", left:35}} allowfullscreen></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.526315931757!2d74.39356211453925!3d31.482214056176435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391905fd16e335c7%3A0x75e43af25cc8cf44!2sZong+Franchise+DHA!5e0!3m2!1sen!2s!4v1556618380951!5m2!1sen!2s" width="300" height="250" frameBorder="0" style={{border:0 , position:"absolute", left:35}} allowFullScreen></iframe>
 {/* <Demo /> */}
 </div>
 <div className="w3-container w3-round w3-center w3-light-gray" style={{height:45,width:350,position:"absolute",bottom:0}}>
