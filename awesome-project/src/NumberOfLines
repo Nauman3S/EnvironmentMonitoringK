@@ -1,0 +1,29 @@
+Number of lines of code
+App.css =21
+App.js =518
+AQIWodget.js =1
+ChartsElement.js =68
+ClockWidget.js =73
+ClockWidgetCSS =47
+ConnectedSensors.js =96
+DropDown.css =106
+DustChart.js =66
+GaugeElement'js =25
+index.css =14
+index.js =13
+MessageForm.js =25
+MessageList.js =165
+MessageListDust.js =79
+MessageListMQ2.js =78
+MQChart.js =118
+MQTTSubscribe.js =42
+MQTTSubscribeDust.js =43
+MQTTSubscribeMQ2.js =43
+PostMessage.js =25
+Temp.js =5
+TextBox.js =51
+CodeIoT18.ino =199
+ArduinoCode.ino =186
+
+
+Total Lines Of Code = 2107
