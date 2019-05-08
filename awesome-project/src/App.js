@@ -180,10 +180,11 @@ class Toggle extends React.Component {
     }));
     if (this.state.isToggleOn){
       console.log("toggle on");
-
+      this.props.mount();
     }
     else{
       console.log("toggle off");
+      this.props.unmount();
     }
   }
 
@@ -192,7 +193,7 @@ class Toggle extends React.Component {
 
 <div>
   
-      <button className= "w3-btn w3-block w3-teal" onClick={this.handleClick}>
+      <button className= "w3-btn w3-block w3-teal" mount={this.props.mount} unmount={this.props.unmount} onClick={this.handleClick}>
         {this.state.isToggleOn ? 'ON' : 'OFF'}
       </button>
       </div>
@@ -207,9 +208,29 @@ class App extends Component {
     this.getDataDropDown=this.getDataDropDown.bind(this);
     this.getHumid=this.getHumid.bind(this);
     this.CheckTheValues=this.CheckTheValues.bind(this);
-    setInterval(this.CheckTheValues, 1000);
- 
+    this.mount=this.mount.bind(this);
+    this.unmount=this.unmount.bind(this);
+    //setInterval(this.CheckTheValues, 1000);
+ this.state={timerID:null};
     
+  }
+  mount(){
+    console.log("mounter");
+    this.state.timerID = setInterval(
+      () => this.CheckTheValues(),
+      1000
+    );
+  }
+  unmount(){
+    console.log("unmounter");
+    clearInterval(this.state.timerID);
+  }
+  componentDidMount() {
+   
+  }
+
+  componentWillUnmount() {
+   
   }
   
 CheckTheValues(){
@@ -423,7 +444,7 @@ console.log(sendHumid.val);
 
           <br/>
           <div style={{display:"flex", flexDirection:"left"}}>
-          <Toggle />
+          <Toggle mount={this.mount} unmount={this.unmount}/>
           
           <TextBox sendDataTextBox={this.getData}/>
           
