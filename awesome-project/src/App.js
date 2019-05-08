@@ -11,6 +11,7 @@ import _MessageContainer from './MQTTsubscribe.js';
 import {sendHumid} from './MessageList.js';
 import _MessageContainerMQ2 from './MQTTSubscribeMQ2';
 import _MessageContainerDust from './MQTTSubscribeDust';
+
 import {subscribe} from 'mqtt-react';
 import Clock from "./ClockWidget.js";
 //import ChartElement from "./ChartsElement";
@@ -20,9 +21,11 @@ import TextBox from './TextBox';
 import { send } from 'q';
 
 
+
 const MessageContainer = subscribe({topic: 'c/data/dht22/string'})(_MessageContainer);
 const MessageContainerMQ2 = subscribe({topic: 'c/data/mq2/string'})(_MessageContainerMQ2);
 const MessageContainerDust = subscribe({topic: 'c/data/dust/string'})(_MessageContainerDust);
+
 class SideBar extends React.Component{
   
   
@@ -199,18 +202,47 @@ class Toggle extends React.Component {
 class App extends Component {
   constructor(props){
     super(props);
-    this.state={dropDown:'', TextBox:'', humid:0}
+    this.state={dropDown:'', TextBox:'', humid:0,alarmSentFlag:0}
     this.getData=this.getData.bind(this);
     this.getDataDropDown=this.getDataDropDown.bind(this);
     this.getHumid=this.getHumid.bind(this);
+    this.CheckTheValues=this.CheckTheValues.bind(this);
+    setInterval(this.CheckTheValues, 1000);
+ 
+    
   }
   
+CheckTheValues(){
+  console.log("Ticking");
+  try{
+  const mqtt = require('mqtt');
+  const client = mqtt.connect('ws://broker.hivemq.com:8000/mqtt');
   
+  if(this.state.dropDown==="Humidity"){
+  console.log("flag",sendHumid.flag) ;
+  if(sendHumid.flag===1){////check if sensor is sending the data
+    if(sendHumid.val>=parseInt(this.state.TextBox)){
+      if(this.state.alarmSentFlag===0){
+    client.on('connect', () => {
+        // Inform controllers that garage is connected
+        client.publish('c/data/alarms/string', 'alarm;'+sendHumid.val);
+        this.setState({alarmSentFlag:1})
+      })
+    }
+}
+}
+}
+}
+catch(err){
+  console.log("tick error occured",err);
+}
+}
   getData(val){
     // do not forget to bind getData in constructor
   //  console.log(val);
     this.setState({TextBox:val});
     console.log(this.state.TextBox);
+    this.setState({alarmSentFlag:0})
 }
  getHumid(val){
   this.setState({humid:val});
@@ -238,6 +270,7 @@ console.log(sendHumid.val);
   <h3>
     <img src={logo} className="App-logo" alt="logo"  style={{height:40}}/>
   Industrial Environment Monitor
+  
   </h3>
 </div>
       <div className="w3-container w3-custom-color" style={{"width":'100%'}}>      
