@@ -245,7 +245,7 @@ CheckTheValues(){
       
     client.on('connect', () => {
         // Inform controllers that garage is connected
-        client.publish('c/data/alarms/string', 'alarmType;Humid;'+'alarmAt;'+sendHumid.val+';alarmUpperBound;'+parseInt(this.state.TextBox));
+        client.publish('c/data/d/string', 'alarmType;Humid;'+'alarmAt;'+sendHumid.val+';alarmUpperBound;'+parseInt(this.state.TextBox));
         this.setState({alarmSentFlag:1})
         
       })
@@ -264,7 +264,7 @@ else if(this.state.dropDown==="Temperature"){
       
     client.on('connect', () => {
         // Inform controllers that garage is connected
-        client.publish('c/data/alarms/string', 'alarmType;Temp;'+'alarmAt;'+sendTemp.val+';alarmUpperBound;'+parseInt(this.state.TextBox));
+        client.publish('c/data/d/string', 'alarmType;Temp;'+'alarmAt;'+sendTemp.val+';alarmUpperBound;'+parseInt(this.state.TextBox));
         this.setState({alarmSentFlag:1})
       })
     }
@@ -349,7 +349,7 @@ console.log(sendHumid.val);
           
          <div className="w3-container w3-round w3-center w3-light-gray" style={{height:45,width:240,position:"absolute",bottom:0}} >
          
-        <h6 style={{position:"absolute", bottom:0}}>{"Temperature Sensor"}</h6>
+        <h6 style={{position:"absolute", bottom:0}}>{"Humidity Sensor"}</h6>
 
 
            </div>

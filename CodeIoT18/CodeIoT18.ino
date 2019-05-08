@@ -67,6 +67,11 @@ else if(contains(incoming,"Sensor;Dust")){
   client.publish("c/data/dust/string",incoming);
   
 }
+else if(contains(incoming,"alarmType;")){
+  Serial.println("Alarm Detected ");
+ // client.publish("c/data/dust/string",incoming);
+  digitalWrite(D4,HIGH);
+}
 ///////////////////////////
 }
 
@@ -78,7 +83,8 @@ void setup() {
   delay(10);
   Serial.println();
   Serial.println();
- 
+ pinMode(D4,OUTPUT);
+ digitalWrite(D4,LOW);
 
   delay(1000);
 }
