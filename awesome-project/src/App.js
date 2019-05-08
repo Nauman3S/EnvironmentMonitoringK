@@ -9,6 +9,7 @@ import './w3.css';
 import {Connector} from "mqtt-react";
 import _MessageContainer from './MQTTsubscribe.js';
 import {sendHumid} from './MessageList.js';
+import {sendTemp} from './MessageList.js';
 import _MessageContainerMQ2 from './MQTTSubscribeMQ2';
 import _MessageContainerDust from './MQTTSubscribeDust';
 
@@ -225,13 +226,7 @@ class App extends Component {
     console.log("unmounter");
     clearInterval(this.state.timerID);
   }
-  componentDidMount() {
-   
-  }
-
-  componentWillUnmount() {
-   
-  }
+  
   
 CheckTheValues(){
   console.log("Ticking");
@@ -246,13 +241,29 @@ CheckTheValues(){
       if(this.state.alarmSentFlag===0){
     client.on('connect', () => {
         // Inform controllers that garage is connected
-        client.publish('c/data/alarms/string', 'alarm;'+sendHumid.val);
+        client.publish('c/data/alarms/string', 'alarmType;Humid;'+'alarmAt;'+sendHumid.val+';alarmUpperBound;'+parseInt(this.state.TextBox));
         this.setState({alarmSentFlag:1})
       })
     }
 }
 }
 }
+
+if(this.state.dropDown==="Temperature"){
+  console.log("flag",sendTemp.flag) ;
+  if(sendTemp.flag===1){////check if sensor is sending the data
+    if(sendTemp.val>=parseInt(this.state.TextBox)){
+      if(this.state.alarmSentFlag===0){
+    client.on('connect', () => {
+        // Inform controllers that garage is connected
+        client.publish('c/data/alarms/string', 'alarmType;Temp;'+'alarmAt;'+sendTemp.val+';alarmUpperBound;'+parseInt(this.state.TextBox));
+        this.setState({alarmSentFlag:1})
+      })
+    }
+}
+}
+}
+
 }
 catch(err){
   console.log("tick error occured",err);

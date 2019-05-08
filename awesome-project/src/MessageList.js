@@ -8,7 +8,9 @@ import MQChart from './MQChart.js';
 var TempGraph=[{name:0, Value:0}];
 var MQGraph=[{name:0,LPG:0,CO:0,Smoke:0}];
 var sendHumid={val:0,flag:0};
+var sendTemp={val:0,flag:0}
 export{sendHumid};
+export{sendTemp};
 export default ({data,type}) => {
  // const dataList = data.map((d) => <li>{d}</li>)
  
@@ -33,7 +35,7 @@ export default ({data,type}) => {
       if (arr1[1]==="DHT22"){
        
       
-
+        sendTemp={val:parseInt(arr1[2]),flag:1};///flag==1 no error
         return (
         
         <GaugeElement val={parseInt( arr1[2])} def="Temperature Sensor" sign={"°C"}/> 
