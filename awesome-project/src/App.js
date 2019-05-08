@@ -216,6 +216,7 @@ class App extends Component {
     
   }
   mount(){
+    
     console.log("mounter");
     this.state.timerID = setInterval(
       () => this.CheckTheValues(),
@@ -231,29 +232,36 @@ class App extends Component {
 CheckTheValues(){
   console.log("Ticking");
   try{
-  const mqtt = require('mqtt');
-  const client = mqtt.connect('ws://broker.hivemq.com:8000/mqtt');
-  
+    
+    
   if(this.state.dropDown==="Humidity"){
   console.log("flag",sendHumid.flag) ;
+  console.log(this.state.TextBox,"TB");
   if(sendHumid.flag===1){////check if sensor is sending the data
     if(sendHumid.val>=parseInt(this.state.TextBox)){
       if(this.state.alarmSentFlag===0){
+        const mqtt = require('mqtt');
+        const client = mqtt.connect('ws://broker.hivemq.com:8000/mqtt');
+      
     client.on('connect', () => {
         // Inform controllers that garage is connected
         client.publish('c/data/alarms/string', 'alarmType;Humid;'+'alarmAt;'+sendHumid.val+';alarmUpperBound;'+parseInt(this.state.TextBox));
         this.setState({alarmSentFlag:1})
+        
       })
     }
 }
 }
 }
 
-if(this.state.dropDown==="Temperature"){
+else if(this.state.dropDown==="Temperature"){
   console.log("flag",sendTemp.flag) ;
   if(sendTemp.flag===1){////check if sensor is sending the data
     if(sendTemp.val>=parseInt(this.state.TextBox)){
       if(this.state.alarmSentFlag===0){
+        const mqtt = require('mqtt');
+        const client = mqtt.connect('ws://broker.hivemq.com:8000/mqtt');
+      
     client.on('connect', () => {
         // Inform controllers that garage is connected
         client.publish('c/data/alarms/string', 'alarmType;Temp;'+'alarmAt;'+sendTemp.val+';alarmUpperBound;'+parseInt(this.state.TextBox));
