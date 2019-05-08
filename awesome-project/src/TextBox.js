@@ -35,15 +35,15 @@ export default class TextBox extends React.Component {
         <div className="w3-card-4 w3-round-large">
 
         <div className="w3-container w3-green ">
-          <h2>Values</h2>
+          <h3>Alarm</h3>
         </div>
 
       <form className="w3-container w3-light-gray  w3-round" onSubmit={this.handleSubmit}>
-        <label>
+        <h5>
           If value greater than:
           <input type="text" className="w3-input w3-round-large" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" className="w3-button w3-teal w3-round" value="Submit" />
+        </h5>
+        {/* <input type="submit" className="w3-button w3-teal w3-round" value="Submit" /> */}
       </form>
       </div>
     );

@@ -194,7 +194,7 @@ class Toggle extends React.Component {
 
 <div>
   
-      <button className= "w3-btn w3-block w3-teal" mount={this.props.mount} unmount={this.props.unmount} onClick={this.handleClick}>
+      <button className= "w3-btn w3-block w3-teal w3-round-large"  mount={this.props.mount} unmount={this.props.unmount} onClick={this.handleClick}>
         {this.state.isToggleOn ? 'ON' : 'OFF'}
       </button>
       </div>
@@ -463,11 +463,41 @@ console.log(sendHumid.val);
 
           <br/>
           <div style={{display:"flex", flexDirection:"left"}}>
-          <Toggle mount={this.mount} unmount={this.unmount}/>
+
+          <div className="w3-row">
+  <div className="w3-col s3 w3-khaki w3-center" >
+  <p>AlarmType</p>
+  <Dropdown sendDataDropDown={this.getDataDropDown}/>
+  </div>
+  <div className="w3-col s9  w3-center">
+  <div className="w3-col s4  w3-padding-16">
+          <div className="w3-card-4 w3-white w3-round-large" style={{width:490 , height: 250, paddingTop:10, position:"relative"}} >
           
           <TextBox sendDataTextBox={this.getData}/>
+          <Toggle mount={this.mount} unmount={this.unmount}/>
+
+           <div className="w3-container w3-round w3-center w3-light-gray" style={{height:45,width:490,position:"absolute",bottom:0}}>
+         
+               <h6 style={{position:"absolute", bottom:0}}>Alarm will fire one time</h6>
+       
+                </div>
+        </div>
+
+
+          </div>
           
-          <Dropdown sendDataDropDown={this.getDataDropDown}/>
+  </div>
+</div>
+
+
+
+
+
+          
+          
+          
+          
+          
           
           </div>
         
