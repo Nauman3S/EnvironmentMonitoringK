@@ -17,7 +17,7 @@ String mac=(WiFi.macAddress());
 char __mac[sizeof(mac)];
 const char *ssid =	"PTCL-BB"; //////WiFi Router SSID
 const char *pass =	"78ff5f74";   ////WiFi Router Password
-const char *mqtt_server = "broker.hivemq.com";
+const char *mqtt_server = "iot.eclipse.org";
 const int mqtt_port = 1883;
 const char *mqtt_user = "testUser";
 const char *mqtt_pass = "testUser@nauman";

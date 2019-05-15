@@ -489,16 +489,6 @@ console.log(sendHumid.val);
   </div>
 </div>
 
-
-
-
-
-          
-          
-          
-          
-          
-          
           </div>
         
         {/* <MQTTVal topic="dd" message="msg" /> */}
@@ -515,3 +505,5 @@ console.log(sendHumid.val);
 }
 
 export default App;
+
+
