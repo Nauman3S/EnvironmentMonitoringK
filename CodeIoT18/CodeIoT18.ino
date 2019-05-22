@@ -15,8 +15,10 @@ String dataUser ="";
 String dataState ="";
 String mac=(WiFi.macAddress());
 char __mac[sizeof(mac)];
-const char *ssid =	"PTCL-BB"; //////WiFi Router SSID
-const char *pass =	"78ff5f74";   ////WiFi Router Password
+const char *ssid =  "admin"; //////WiFi Router SSID
+const char *pass =  "abc123098a";
+//const char *ssid =	"PTCL-BB"; //////WiFi Router SSID
+//const char *pass =	"78ff5f74";   ////WiFi Router Password
 const char *mqtt_server = "iot.eclipse.org";
 const int mqtt_port = 1883;
 const char *mqtt_user = "testUser";
