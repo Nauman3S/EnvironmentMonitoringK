@@ -3,7 +3,7 @@
 #include <PubSubClient.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial SoftSerialWD(D7,D8);
+SoftwareSerial SoftSerialWD(D6,D8);
 
 String getValueString(String data, char separator, int index);
 bool contains(String Val, String element);
@@ -14,11 +14,11 @@ String userName="testuser";
 String dataUser ="";
 String dataState ="";
 String mac=(WiFi.macAddress());
-char __mac[sizeof(mac)];
-const char *ssid =  "admin"; //////WiFi Router SSID
-const char *pass =  "abc123098a";
-//const char *ssid =	"PTCL-BB"; //////WiFi Router SSID
-//const char *pass =	"78ff5f74";   ////WiFi Router Password
+char __mac[sizeof(mac)];      
+//const char *ssid =  "admin"; //////WiFi Router SSID
+//const char *pass =  "abc123098a";
+const char *ssid =	"PTCL-BB"; //////WiFi Router SSID
+const char *pass =	"78ff5f74";   ////WiFi Router Password
 const char *mqtt_server = "iot.eclipse.org";
 const int mqtt_port = 1883;
 const char *mqtt_user = "testUser";
@@ -28,6 +28,7 @@ const char *mqtt_client_name = __mac;//"12312312312332212";// any random alphanu
 String incoming="";
 String content = "";
 WiFiClient wclient;
+int LED=D5;
 PubSubClient client(wclient, mqtt_server,mqtt_port);
 
 void callback(const MQTT::Publish& pub) {
@@ -87,7 +88,8 @@ void setup() {
   Serial.println();
  pinMode(D4,OUTPUT);
  digitalWrite(D4,LOW);
-
+pinMode(LED,OUTPUT);
+digitalWrite(LED,LOW);
   delay(1000);
 }
 
@@ -126,11 +128,13 @@ void loop() {
   
   
   if(readIncomingData()!=""){
+    digitalWrite(LED,HIGH);
     Serial.println("Data from Serial Port");
   Serial.println(readIncomingData());
     client.publish("c/data/d/string",readIncomingData());
    // client.publish("c/data/mq2/string","Sensor;MQ2;12.24;33.2;76.72");
   content="";
+  digitalWrite(LED,LOW);
   }
 }
 
@@ -199,4 +203,5 @@ bool contains(String Val, String element){
     return false;
   }
 }
+
 
