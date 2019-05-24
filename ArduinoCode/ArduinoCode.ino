@@ -1,3 +1,15 @@
+//Pins
+/*
+BLACK=5V
+BROWN=GND
+RED=8
+Orange=7
+YELLOW=2
+GREEN=A3
+BLUE=A7
+
+
+*/
 #include <SoftwareSerial.h>
 #include <MQ2.h>
 #include <Adafruit_Sensor.h>
@@ -184,4 +196,5 @@ void MQ2Loop(){
   
   }
 }
+
 
