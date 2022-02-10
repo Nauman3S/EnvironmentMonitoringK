@@ -9,7 +9,7 @@
     "google-map-react": "^1.1.4",
     "gsap": "^2.1.2",
     "mqtt-react": "0.0.3",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-chartjs": "^1.2.0",
     "react-circular-progressbar": "^1.1.0",
